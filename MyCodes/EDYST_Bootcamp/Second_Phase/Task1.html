@@ -1,0 +1,34 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showing and Hiding Password Manually</title>
+
+    <script>
+        function fnShowHidePassword(){
+            var butref = document.getElementById("switch-button")
+            var pwdref = document.getElementById("inputpwd")
+            if(pwdref.type==="password"){
+                pwdref.type = "text"
+                
+                butref.innerText = "Hide Password"
+                console.log("View password Enabled")
+            }
+            else{
+                pwdref.type = "password"
+                butref.innerText = "Show Password"
+                console.log("Hide password Enabled")
+            }
+        }
+    </script>
+</head>
+<body>
+    <div>
+        Enter password<input type="password" id="inputpwd">
+        <button id="switch-button" onclick="fnShowHidePassword()">Show password</button>
+
+    </div>
+    
+</body>
+</html>

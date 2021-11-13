@@ -1,0 +1,24 @@
+
+h3{     
+   color: whitesmoke;
+    }
+
+body {
+    /* background-color: rgb(156, 21, 134); */ 
+    /* background: repeating-linear-gradient(35deg, transparent, violet 0px, purple 75px, violet 150px, cyan 225px, violet 300px) ; */
+    background: linear-gradient(35deg, violet,cyan, violet, violet, cyan);
+    }
+
+ol {
+    color:aliceblue;
+    }
+
+a{
+    color: rgb(221, 218, 202);
+    text-decoration: underline blueviolet;
+    border: 5px solid yellowgreen
+}
+
+strong{
+    color: yellowgreen;
+}

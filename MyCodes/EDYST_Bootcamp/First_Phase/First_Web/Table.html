@@ -1,0 +1,165 @@
+<html lang="en">
+<head>
+    <title>Document</title>
+
+    <style>
+        .div2{
+            border-radius:5px;
+            padding: 10 20 10 20;
+            text-align:center;
+        }
+
+        span{
+           bottom: auto; 
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <table border="1">
+            <tr>
+                <thead>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th>State</th>
+                </thead>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>Aayush</td>
+                <td>Surat</td>
+                <td>Gujarat</td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>Jeff</td>
+                <td>Seattle</td>
+                <td>California</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>Shivam</td>
+                <td>Nashik</td>
+                <td>Maharastra</td>
+            </tr>
+
+            <tr></tr>
+        </table>
+    </div>
+    
+    <div id="div2">
+        <h2>Table with Colspan</h2>
+        <table style="border-radius:5px;"border="1">
+            <tr>
+            <thead style="border-radius:20px;">
+                <th class="div2">ID</th>
+                <th class="div2">Name</th>
+                <th class="div2">City</th>
+                <th class="div2" colspan="3">Address</th>
+            </thead>
+        </tr>
+            <tbody>
+                <tr>
+                    <td class="div2">1</td>
+                    <td class="div2">Aayush</td>
+                    <td class="div2">Surat</td>
+                    <td class="div2">Saidham Palace</td>
+                    <td class="div2">Varachhaa</td>
+                    <td class="div2">395001</td>
+                </tr>
+                <tr>
+                    <td class="div2">2</td>
+                    <td class="div2">Gon</td>
+                    <td class="div2">Whale Island</td>
+                    <td class="div2">343</td>
+                    <td class="div2" >Redwood castle</td>
+                    <td class="div2">500145</td>
+                </tr>
+                <tr>
+                    <td class="div2">3</td>
+                    <td class="div2">Sherlock</td>
+                    <td class="div2">London</td>
+                    <td class="div2">Hotel Blanca</td>
+                    <td class="div2">Bakers street</td>
+                    <td class="div2">310401</td>
+                </tr>
+                <tr>
+                    <td class="div2">4</td>
+                    <td class="div2">Dexter</td>
+                    <td class="div2">Paris</td>
+                    <td class="div2">Shizo Palazio</td>
+                    <td class="div2">Ghabi</td>
+                    <td class="div2">437001</td>
+                </tr>
+            </tbody>
+    </table>
+    </div>
+
+    <div>
+        <h2>Table with Rowspan</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>City</th>
+                    <th colspan="3">Address</th>
+                
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>
+                        <span>Aayush</span>
+                        <span>Bhadani</span>
+                    </td>
+                    <td>Surat</td>
+                    <td>Saidham Palace</td>
+                    <td>Varachha</td>
+                    <td>395001</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Gon</td>
+                    <td>Whale Island</td>
+                    <td>343</td>
+                    <td>Redwood Castle</td>
+                    <td>500145</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Sherlock</td>
+                    <td>London</td>
+                    <td>Hotel Blanca</td>
+                    <td>Bakers Street</td>
+                    <td>310401</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Dexter</td>
+                    <td>Paris</td>
+                    <td>Shizo Palazio</td>
+                    <td>Ghabi</td>
+                    <td>437001</td>
+                </tr>
+<!-- 
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+-->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
