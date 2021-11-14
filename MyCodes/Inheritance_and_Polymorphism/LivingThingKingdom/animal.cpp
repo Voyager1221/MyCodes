@@ -1,11 +1,12 @@
 #include <iostream>
-
+#include "livingThing.cpp"
 using namespace std;
 
-class animal{
-    void print();
-    void vertebrates();
-    void dinosaurs();
+class animal : public livingThing{
+    public:
+        void print();
+        void vertebrates();
+        void dinosaurs();
 };
 
 void animal::print(){
