@@ -34,15 +34,15 @@ class animals: public livingThings{
         
         //We can't directly inherit a function having same name that of a parent class. 
         //We need to declare and define the function having same name that of a parent class.
-        void print(); 
+        //void print(); 
         void vertebrates();
         void dinosaurs();
 };
 
-void animals::print(){
-    cout<<"\nWith love from animals."<<endl;
-    cout<<"\nAnimals comes under living things."<<endl;
-}
+// void animals::print(){
+//     cout<<"\nWith love from animals."<<endl;
+//     cout<<"\nAnimals comes under living things."<<endl;
+// }
 
 void animals::vertebrates(){
     cout<<"\nWith love from animals."<<endl;
@@ -119,21 +119,21 @@ void vertebrates::mammals(){
 }
 
 void vertebrates::birds(){
-    cout<<"With Love from birds."<<endl;
-    cout<<"\n Birds reproduce by laying eggs."<<endl;
+    cout<<"\nWith Love from birds."<<endl;
+    cout<<"\nBirds reproduce by laying eggs."<<endl;
 }
 
 class dinosaurs: public animals{
     public:
-        void print();
+   //     void print();
         void theropods();
         void sauropods();
 }; 
 
-void dinosaurs::print(){
-    cout<<"\nHey! This is dinosaurs' class."<<endl;
-    cout<<"\nDinosaurs are classified under animals."<<endl;
-}
+// void dinosaurs::print(){
+//     cout<<"\nHey! This is dinosaurs' class."<<endl;
+//     cout<<"\nDinosaurs are classified under animals."<<endl;
+// }
 
 void dinosaurs::theropods(){
     cout<<"\nWith Love from theropods."<<endl;
@@ -185,12 +185,8 @@ void eomycota::print(){
 /*
     class livingThing >> class animals
                             > class vertebrates 
-                                 > class mammals
-                                 > class birds
                             > class dinosaurs 
-                                 > class theropods
-                                 > class sauropods
-                      
+                               
                       >> class plants
                             > class floweringPlants
                             > class moss
@@ -205,4 +201,16 @@ int main(){
 
     vertebrates verte;
     verte.print();
+    verte.birds();
+    verte.plants();
+
+    dinosaurs dino;
+    dino.print();
+    dino.plants();
+    
+    // This object assignment doesn't work
+
+    // dinosaurs obj1;
+    // animals obj2;
+    // obj1 = obj2;
 }
