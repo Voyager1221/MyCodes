@@ -62,6 +62,7 @@ class plants: public livingThings{
         void moss();
 };
 
+
 void plants::print(){
     cout<<"\nHey! This is plants' class."<<endl;
     cout<<"\nPlants comes under livingThings."<<endl;
@@ -84,6 +85,7 @@ class fungi: public livingThings{
         void sacFungi();
         void eomycota();
 };
+
 void fungi::print(){
     cout<<"\nHey! This is fungi's class."<<endl;
 }
@@ -98,7 +100,7 @@ void fungi::eomycota(){
     cout<<"\nA taxonomic sub-kingdom within the kingdom Fungi."<<endl;
 }
 
-//3rd Generation
+//3rd Generation => Animals
 class vertebrates: public animals{
     public:
         void print();
@@ -123,21 +125,84 @@ void vertebrates::birds(){
 
 class dinosaurs: public animals{
     public:
+        void print();
         void theropods();
         void sauropods();
 }; 
 
+void dinosaurs::print(){
+    cout<<"\nHey! This is dinosaurs' class."<<endl;
+    cout<<"\nDinosaurs are classified under animals."<<endl;
+}
+
 void dinosaurs::theropods(){
-    cout<<""
+    cout<<"\nWith Love from theropods."<<endl;
+    cout<<"\nTheropods are characterized by bones and three-toed limbs"<<endl;
+}
+
+void dinosaurs::sauropods(){
+    cout<<"\nWith love form sauropods."<<endl;
+    cout<<"\nSauropods are clade of saurischian."<<endl;
+}
+
+//3rd Generation => Plants
+class floweringPlants: public plants{
+    public:
+        void print();
+};
+
+void floweringPlants::print(){
+    cout<<"\nExamples of flowering plants are lily, daisy, bougainvillea."<<endl;
+}
+class moss: public plants{
+    public:
+        void print();
+};
+
+void moss::print(){
+    cout<<"\nMoss can be seen in forest and also in stagnant water."<<endl;
+}
+
+//3rd Generation => Fungi
+class sacFungi: public fungi{
+    public:
+        void print();
+};
+
+void sacFungi::print(){
+    cout<<"\nSac Fungi includes morels, truffles, brewer's yeast and baker's yeast."<<endl;
+}
+
+class eomycota: public fungi{
+    public:
+        void print();
+};
+
+void eomycota::print(){
+    cout<<"\nEomycota includes pezizales, cladosporium and halotiales."<<endl;
 }
 
 /*
-class humans: public mammals{
+    class livingThing >> class animals
+                            > class vertebrates 
+                                 > class mammals
+                                 > class birds
+                            > class dinosaurs 
+                                 > class theropods
+                                 > class sauropods
+                      
+                      >> class plants
+                            > class floweringPlants
+                            > class moss
 
-};
+                      >> class fungi
+                            > class sacFungi
+                            > class eomycota                 
 */
-
-
 int main(){
+    animals anima;
+    anima.print();
 
+    vertebrates verte;
+    verte.print();
 }
