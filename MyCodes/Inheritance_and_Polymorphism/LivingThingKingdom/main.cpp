@@ -1,6 +1,8 @@
 #include<iostream>
 #include "livingThings.cpp"
 #include "animals.cpp"
+#include "plants.cpp"
+#include "fungi.cpp"
 
 using namespace std;
 
