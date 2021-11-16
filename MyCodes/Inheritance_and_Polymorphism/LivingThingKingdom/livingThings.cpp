@@ -3,7 +3,8 @@
 using namespace std;
 
 class livingThings{
-    void print();
+    public:
+        void print();             
 };
 
 void livingThings::print(){

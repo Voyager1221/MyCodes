@@ -21,6 +21,6 @@ int main(){
     fung.print();
     fung.sacFungi();
     fung.eomycota();
-    
+
     return 0;
 }
