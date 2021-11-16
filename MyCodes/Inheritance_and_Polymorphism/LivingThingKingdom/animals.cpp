@@ -29,15 +29,15 @@ class vertebrates:public animals{
 };
 
 void vertebrates::print(){
-
+    cout<<"\nVertebrates comes under animals"<<endl;
 }
 
 void vertebrates::birds(){
-
+    cout<<"\nBirds comes under vertebrates"<<endl;
 }
 
 void vertebrates::humans(){
-
+    cout<<"\nAnimals comes under vertebrates"<<endl;
 }
 
 class dinosaurs:public animals{
@@ -49,13 +49,13 @@ class dinosaurs:public animals{
 };
 
 void dinosaurs::print(){
-    
+    cout<<"\nDinosaurs come under animals"<<endl;
 }
 
 void dinosaurs::theropods(){
-
+    cout<<"\nTheropods were most diverse group of saurischian dinosaurs"<<endl;
 }
 
 void dinosaurs::sauropods(){
-
+    cout<<"\nSauropods is a clade of saurischian dinosaurs"<<endl;
 }
