@@ -2,11 +2,11 @@
 
 using namespace std;
 
-class livingThing{
+class livingThings{
     void print();
 };
 
-void livingThing::print(){
+void livingThings::print(){
     cout<<"\nHey! This is livingThing's class"<<endl;
     cout<<"\nLiving things are categorized into Animal Plants and Fungi"<<endl;
 }

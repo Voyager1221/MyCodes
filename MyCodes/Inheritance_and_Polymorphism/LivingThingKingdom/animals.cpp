@@ -1,23 +1,23 @@
 #include <iostream>
-#include "livingThing.cpp"
+#include "livingThings.cpp"
 using namespace std;
 
-class animal : public livingThing{
+class animals : public livingThings{
     public:
         void print();
         void vertebrates();
         void dinosaurs();
 };
 
-void animal::print(){
+void animals::print(){
     cout<<"\nAnimals are categorized into vertebrates and dinosaurs"<<endl;
 }
 
-void animal::vertebrates(){
+void animals::vertebrates(){
     cout<<"\nAny animal of the chordate subphylum vertebrata"<<endl;
 }
 
-void animal::dinosaurs(){
+void animals::dinosaurs(){
     cout<<"\nDinosaurs are a diverse group of reptiles of clade dinosauria"<<endl;
 }
 

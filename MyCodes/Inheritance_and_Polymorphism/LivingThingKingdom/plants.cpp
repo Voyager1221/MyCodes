@@ -1,8 +1,8 @@
 #include <iostream>
-#include "livingThing.cpp"
+#include "livingThings.cpp"
 using namespace std;
 
-class plants: public livingThing{
+class plants: public livingThings{
     public:
         void print();
         void floweringPlants();

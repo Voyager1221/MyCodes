@@ -1,11 +1,11 @@
 #include<iostream>
-#include "livingThing.cpp"
-#include "animal.cpp"
+#include "livingThings.cpp"
+#include "animals.cpp"
 
 using namespace std;
 
 int main(){
-    animal anima;
+    animals anima;
     anima.print();
     return 0;
 }
