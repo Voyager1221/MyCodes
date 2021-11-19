@@ -2,7 +2,7 @@
 #include "livingThings.cpp"
 using namespace std;
 
-class fungi:public livingThings{
+class fungi:public livingThing{
     public:
         void print();
         void sacFungi();
