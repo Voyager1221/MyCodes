@@ -4,7 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <string>
-
+#include <algorithm>
 using namespace std;
 
 template <class T>
@@ -15,10 +15,10 @@ void inputVector(vector<T> &vec){
 
     vec.push_back(value);
     string ans;
-    cout<<"Do you want to continue. \nPress y/n or yes/no : ";
+    cout<<"\nDo you want to continue. \nPress y/n or yes/no : ";
     cin>>ans;
 
-    std::transform(ans.begin(), ans.end(), ans.begin(), ::tolower);
+    transform(ans.begin(), ans.end(), ans.begin(), ::tolower);
     if(ans.compare("yes")==0||ans.compare("y")==0){
         inputVector(vec);
     }
@@ -46,6 +46,7 @@ void inputVectorByValue(vector<T> &temp){
 
 template <class T>
 void printVector(vector<T> &vec){
+    cout<<endl;
     for(auto itr: vec){
         cout<<itr<<" "<<endl;
     }
@@ -53,11 +54,17 @@ void printVector(vector<T> &vec){
 
 
 int main(){
-    vector<int> vec;
+    //vector<int> vec;
+    //vector<float> vec;
+    vector<string> vec;
+
     inputVector(vec);
     printVector(vec);
 
-    inputVectorByValue(vec_by_value<int>);
-    printVector(vec_by_value<int>);
+    // inputVectorByValue(vec_by_value<int>);
+    // printVector(vec_by_value<int>);
+    
+    inputVectorByValue(vec_by_value<string>);
+    printVector(vec_by_value<string>);
     return 0;
 }
