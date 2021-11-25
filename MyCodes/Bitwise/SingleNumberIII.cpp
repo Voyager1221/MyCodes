@@ -14,20 +14,21 @@ int main(){
     }
 
     for(int i=0; i<n; i++){
+        if(res^arr==0)
         res = res^arr[i];
     }
     cout<<"\nres for first time: "<<res<<endl;
-    vector<int> vec;
-    for(int i=0; i<n; i++){
-        if(res^arr[i]!=0){
-            vec.push_back(arr[i]);
-        }
-        res = res^arr[i];
-    }
+    // vector<int> vec;
+    // for(int i=0; i<n; i++){
+    //     if(res^arr[i]!=0){
+    //         vec.push_back(arr[i]);
+    //     }
+    //     res = res^arr[i];
+    // }
 
-    for(auto itr:vec){
-        cout<<itr<<endl;
-    }
+    // for(auto itr:vec){
+    //     cout<<itr<<endl;
+    // }
 
     //cout<<"\nres for second time = "<<res<<endl;
 }

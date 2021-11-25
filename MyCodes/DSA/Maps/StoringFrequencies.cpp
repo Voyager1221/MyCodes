@@ -27,7 +27,7 @@ int main(){
     cout<<"\nPrinting with lambda function"<<endl;
 
     for(auto itr1 : m){
-        cout<<itr1.first<<" "<<itr1.second<<endl;
+        cout<<(&itr1)->first<<" "<<itr1.second<<endl;
     }
     
     cout<<"\nPrinting with lambda function by passing by reference"<<endl;
