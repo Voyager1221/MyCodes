@@ -32,7 +32,7 @@ int partitionArray(float* arr, int low , int high){
     cout<<"\npivot_element: "<<arr[high]<<endl;
     int x = low-1;
     for(int y=low; y<high; y++){
-        if(arr[y]<pivot_element){
+        if(arr[y]>pivot_element){
             x++;
         
             float temp = arr[x];

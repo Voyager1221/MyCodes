@@ -24,10 +24,12 @@ void solve(){
 }
 
 int main(){
-    int T;
-    cin>>T;
-    while(T--){
-        solve();
-    }
+    // int T;
+    // cin>>T;
+    // while(T--){
+    //     solve();
+    // }
+    long long N =  45999333;
+    cout<<N*1000000<<endl;
     return 0;
 }
