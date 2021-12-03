@@ -12,8 +12,6 @@ int main(){
     auto it = m.find(18);
     for(auto &it : m){
         cout<<it.first<<" ";
-
-        cout<<"\n Printing the next value: "<<it->next.first<<endl;
     }
     cout<<endl;
     if(it==m.end()){

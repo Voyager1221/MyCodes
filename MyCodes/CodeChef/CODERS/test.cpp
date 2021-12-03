@@ -114,7 +114,7 @@ void solve(){
         vec.push_back(num);
     }
     int l = vec.size();
-    sort(vec, vec + l);
+    sort(vec.begin(), vec.end());
     cout<<"Printin the vec: "<<endl;
     for(int i: vec){
         cout<<vec[i]<<" ";

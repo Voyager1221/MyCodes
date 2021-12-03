@@ -5,7 +5,7 @@ using namespace std;
 
 const int MX = 2e5 +5;
 vector<vector<int>> vec(MX);
-vector<vector<bool>> visited(MX);
+vector<vector<bool>> visited(MX, (vector<bool>(MX/1000, false)));
 //queue<int> q;
 	
 void DFS(int node, int A){
@@ -61,11 +61,11 @@ int main() {
 // 	        cout<<i<<" "<<vec[i][j]<<endl;
 // 	    }
 // 	}
-    //DFS(1, A);
-	for(int i=1; i<=visited.size(); i++){
-        for(int j=0; j<visited[i].size(); j++){
-            cout<<i<<" "<<j<<endl;
-        }
-    }
+    DFS(1, A);
+	// for(int i=1; i<=visited.size(); i++){
+    //     for(int j=0; j<visited[i].size(); j++){
+    //         cout<<i<<" "<<j<<endl;
+    //     }
+    // }
 	return 0;
 }

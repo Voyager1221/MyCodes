@@ -48,4 +48,10 @@
         "typeinfo": "cpp",
         "utility": "cpp"
     }
+
+    ,"cmake.cmakePath": "/path/to/cmake"
+
 }
+
+
+    
