@@ -33,6 +33,34 @@ bool check_corner(coOrd K, coOrd R1, coOrd R2){
 
 
 bool good_Position(coOrd K, coOrd R1, coOrd R2){
+    if((R1.y-K.y==1 && R2.y-K.y==1) || (K.y-R1.y==1 && K.y-R2.y==1)){
+        // if((R1.x-K.x==1 && R2.x-K.x==-1) || (R1.x-K.x==-1 && R2.x-K.x==1)){
+        //     return false;
+        // }
+        if(R1.x-R2.x>3 || R2.x-R1.x>3){
+            return true;
+        }
+        if(R1.x-R2.x==1 || R2.x-R1.x==1){
+            if(R1.x-K.x>=1 || K.x-R1.x>=1 || R2.x-K.x>=1 || K.x-R2.x>=1){
+                return true;
+            }
+        }
+        return false;
+    }
+    if((R1.x-K.x==1 && R2.x-K.x==1) || (K.x-R1.x==1 && K.x-R2.x==1)){
+        // if((R1.y-K.y==1 && R2.y-K.y==-1) || (R1.y-K.y==-1 && R2.y-K.y==1)){
+        //     return false;
+        // }
+        if(R1.y-R2.y>3 || R2.y-R1.y>3){
+            return true;
+        }
+        else if(R1.y-R2.y==1 || R2.y-R1.y==1){
+            if(R1.y-K.y>=1 || K.y-R1.y>=1 || R2.y-K.y>=1 || K.y-R2.y>=1){
+                return true;
+            }
+        }
+        return false;
+    }
     if((R1.x>K.x+2 || R1.x<K.x-2) && (R2.x>K.x+2 || R2.x<K.x-2)){
         if(R1.y-K.y==1 || K.y-R1.y==1 || K.y-R2.y==1 || R2.y-K.y==1){
             if(R1.x!=R2.x && R1.y!=R2.y){
@@ -61,20 +89,28 @@ void solve(){
     if(check_Border(xK, yK)){
         // cout<<"\nCheck Border Good"<<endl;
         coOrd K, R1, R2;
-        K.x = xK;   K.y = yK;
-        
+        bool res;
+        int flag=1;
+        K.x = xK;   K.y = yK;    
         R1.x = x1;  R1.y = y1;
-
         R2.x = x2;  R2.y = y2;
-        bool res = good_Position(K, R1, R2);
-        // cout<<"Returned value of good_Position: "<<res<<endl;
+        
+        res = check_corner(K, R1, R2);
         if(res){
-            // cout<<"\nGood_Postion is true."<<endl;
+            flag=0;
             cout<<"Yes"<<endl;
-        }else {
-            // cout<<"\nGood_Position is false"<<endl;
-            cout<<"No"<<endl;
+        }
+        if(flag==1){
+            res = good_Position(K, R1, R2);
+            // cout<<"Returned value of good_Position: "<<res<<endl;
+            if(res){
+                // cout<<"\nGood_Postion is true."<<endl;
+                cout<<"Yes"<<endl;
+            }else {
+                // cout<<"\nGood_Position is false"<<endl;
+                cout<<"No"<<endl;
             }
+        }
     }else {
         // cout<<"\nExecuted last else as No."<<endl;
         cout<<"No"<<endl;}
