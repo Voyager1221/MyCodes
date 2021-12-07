@@ -22,7 +22,7 @@ bool good_Position(CoOrds K, CoOrds R1, CoOrds R2){
             }
         }
     }
-    else if(abs(R1.y-K.y)>=2 && abs(R2.y - K.y)>=2){
+    if(abs(R1.y-K.y)>=2 && abs(R2.y - K.y)>=2){
         if(abs(R1.x-K.x)==1 || abs(R2.x-K.x)==1){
             if(R1.y!=R2.y){
                 return true;
@@ -41,16 +41,18 @@ void solve(){
     bool res;
     if(check_Border(K)){
         if(good_Position(K, R1, R2)){
-            cout<<"Yes"<<endl;
+            cout<<"Yes\n";
         }else {
-            cout<<"No"<<endl;
+            cout<<"No\n";
         }
     }else{ 
-        cout<<"No"<<endl;
+        cout<<"No\n";
     }
 }
 
 int main(){
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
     int T;
     cin>>T;
     while(T--){
