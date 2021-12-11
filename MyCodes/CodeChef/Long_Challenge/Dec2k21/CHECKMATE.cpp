@@ -16,14 +16,14 @@ bool check_Border(CoOrds K){
 
 bool good_Position(CoOrds K, CoOrds R1, CoOrds R2){
     if(abs(R1.x-K.x)>=2 && abs(R2.x - K.x)>=2){
-        if(abs(R1.y-K.y)==1 || abs(R2.y-K.y)==1){
+        if( (K.y==1||K.y==8) && (abs(R1.y-K.y)==1 || abs(R2.y-K.y)==1) ){
             if(R1.x!=R2.x){
                 return true;
             }
         }
     }
     if(abs(R1.y-K.y)>=2 && abs(R2.y - K.y)>=2){
-        if(abs(R1.x-K.x)==1 || abs(R2.x-K.x)==1){
+        if((K.x==1||K.x==8) && (abs(R1.x-K.x)==1 || abs(R2.x-K.x)==1) ){
             if(R1.y!=R2.y){
                 return true;
             }
