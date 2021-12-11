@@ -5,11 +5,12 @@ using namespace std;
 struct Node{
     Node * links[26];
     bool flag = false;
+
     bool containsKey(char ch){
-        return (links[ch - 'a']!=NULL);
+        return links[ch - 'a'] != NULL;
     }
 
-    void put(char ch, Node* node){
+    void put(char ch, Node * node){
         links[ch - 'a'] = node;
     }
 
@@ -17,7 +18,7 @@ struct Node{
         return links[ch - 'a'];
     }
 
-    bool setEnd(){
+    void setEnd(){
         flag = true;
     }
 
@@ -27,32 +28,28 @@ struct Node{
 };
 
 class Trie{
-    private:
-        Node * root;
-    public:
+private:
+    Node * root;
 
-    /*Initialize your data structure here */
+public:
     Trie(){
         root = new Node();
     }
 
-    /* Insert a word into a trie */
     void insert(string word){
-        Node * node = root;
+        Node *node = root;
         for(int i=0; i<word.length(); i++){
             if(!node->containsKey(word[i])){
-                node->put(word[i], new Node());
+                node->put(word[i], new Node());            
             }
-            //Moves to the reference Trie
-            node->get(word[i]);
+            node = node->get(word[i]);
         }
         node->setEnd();
     }
 
-    /*Searchs for the given word in Trie*/
     bool search(string word){
         Node *node = root;
-        for(int i=0 ; i<word.length(); i++){
+        for(int i=0; i<word.length(); i++){
             if(!node->containsKey(word[i])){
                 return false;
             }
@@ -61,14 +58,12 @@ class Trie{
         return node->isEnd();
     }
 
-    /*returns if there is any word starting with the given prefix*/
     bool startsWith(string prefix){
         Node *node = root;
         for(int i=0; i<prefix.length(); i++){
             if(!node->containsKey(prefix[i])){
                 return false;
             }
-
             node = node->get(prefix[i]);
         }
         return true;
@@ -76,6 +71,13 @@ class Trie{
 };
 
 int main(){
-
+    Trie obj1;
+    obj1.insert("Hello");
+    obj1.insert("World");
+    cout<<obj1.search("Hello")<<endl;
+    cout<<obj1.search("Hell")<<endl;
+    cout<<obj1.startsWith("He")<<endl;
+    cout<<obj1.startsWith("Wor")<<endl;
+    cout<<obj1.startsWith("Or")<<endl;
     return 0;
-}    
+}
