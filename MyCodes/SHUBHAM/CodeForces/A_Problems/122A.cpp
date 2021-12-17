@@ -58,8 +58,6 @@ void solve(){
     if(flag==0){
         cout<<"NO"<<endl;
     }
-
-
 }
 
 int main(){
