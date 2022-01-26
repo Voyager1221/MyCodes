@@ -83,12 +83,12 @@ public:
     }
 int main(){
     Trie obj1;
-    obj1.insert("Hello");
-    obj1.insert("World");
-    cout<<obj1.search("Hello")<<endl;
-    cout<<obj1.search("Hell")<<endl;
-    cout<<obj1.startsWith("He")<<endl;
-    cout<<obj1.startsWith("Wor")<<endl;
-    cout<<obj1.startsWith("Or")<<endl;
+    obj1.insert("hello");
+    obj1.insert("world");
+    cout<<obj1.search("hello")<<endl;
+    cout<<obj1.search("hell")<<endl;
+    cout<<obj1.startsWith("he")<<endl;
+    cout<<obj1.startsWith("wor")<<endl;
+    cout<<obj1.startsWith("or")<<endl;
     return 0;
 }
