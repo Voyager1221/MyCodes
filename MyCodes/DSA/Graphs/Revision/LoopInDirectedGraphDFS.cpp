@@ -2,7 +2,7 @@
 #include <vector>
 
 using namespace std;
-
+//This code is not working properly needs to be checked.
 class LoopInDirectedGraph{
     private:
         bool CheckCycleDFS(int node, vector<int>&visited, vector<int>&DFS_Vis, vector<vector<int>>&adjList);
@@ -31,7 +31,6 @@ void LoopInDirectedGraph::CreateAdjList(int n , int m, vector<vector<int>>&adjLi
         int a,b;
         cin>>a>>b;
         adjList[a].push_back(b);
-        adjList[b].push_back(a);
     }
 }
 
