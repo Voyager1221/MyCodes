@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include <climits>
+
 using namespace std;
 
 void CreateAdjList(int m, vector<vector<pair<int, int>>>&adjList){
@@ -13,56 +15,51 @@ void CreateAdjList(int m, vector<vector<pair<int, int>>>&adjList){
     }
 }
 
-void BFS(int node, vector<bool>&MST, vector<int>&dist, vector<int>&parent, vector<vector<pair<int, int>>>&adjList){
-
-}
-
-void PrimsAlgo(int n, vector<bool>&MST, vector<int>&dist, vector<int>&parent, vector<vector<pair<int, int>>>&adjList){
+void PrimsAlgo(int n, vector<bool>&MST, vector<int>&key, vector<int>&parent, vector<vector<pair<int, int>>>&adjList){
     
-    for(int i=0; i<n-1; i++){
-        int min = INT_MAX, index;
-        // vector<pair<int,int>>::iterator itr;
-        for(int j =0; j<n; j++){
-            // if(dist[itr->first]> dist[n]+itr->second){
-            //     dist[itr->first] = dist[n] + itr->second;
-            // }
+    key[0] = 0;
 
-            if(!MST[j] && dist[j]<min){
-                min = dist[j];
+    for(int i=0; i<n; i++){
+        int min = INT_MAX, index;
+
+        for(int j=0; j<n; j++){
+            if(MST[j]==false && key[j]<min){
+                min = key[j];
                 index = j;
             }
         }
         MST[index] = true;
-
         for(auto itr: adjList[index]){
             int v = itr.first;
             int w = itr.second;
 
-            if(MST[v]==false && w<dist[v]){
+            if(w<key[v]){
+                key[v] = w;
                 parent[v] = index;
-                dist[v] = w;
             }
         }
-    }   
-    
-    for(int i=0; i<n; i++){
-        cout<<parent[i]<<" - "<<i<<endl;
     }
+
+    for(int i=1; i<n; i++){
+        cout<<parent[i]<<" - "<<i<<"\n";
+    }
+    
 }
 
-void Solve(int n, int m, vector<bool>&MST, vector<int>&dist, vector<int>&parent, vector<vector<pair<int, int>>>&adjList){
+void Solve(int n, int m, vector<bool>&MST, vector<int>&key, vector<int>&parent, vector<vector<pair<int, int>>>&adjList){
     CreateAdjList(m, adjList);
-    dist[0] = 0;
-
+    PrimsAlgo(n, MST, key, parent, adjList);
 }
 
 int main(){
     int n,m;
     cin>>n>>m;
+
     vector<bool>MST(n, false);
-    vector<int>dist(n, INT_MAX);
+    vector<int>key(n, INT_MAX);
     vector<int>parent(n, -1);
     vector<vector<pair<int, int>>>adjList(n);
 
+    Solve(n, m, MST, key, parent, adjList);
     return 0;
 }
