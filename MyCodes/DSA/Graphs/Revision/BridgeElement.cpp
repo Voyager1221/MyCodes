@@ -47,9 +47,9 @@ void Solve(int n, int m, vector<int>&time, vector<int>&lowTime, vector<vector<in
             DFS(i, -1, cnt, time, lowTime, adjList, bridges);
         }
     }
-    // for(int i=1; i<=n; i++){
-    //     cout<<i<<" - "<<time[i]<<" - "<<lowTime[i]<<endl;
-    // }
+    for(int i=1; i<=n; i++){
+        cout<<i<<" - "<<time[i]<<" - "<<lowTime[i]<<endl;
+    }
 }
 
 int main(){
