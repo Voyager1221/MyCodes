@@ -33,7 +33,7 @@ void DFS(int node, int parent, int* timer, vector<int>&time, vector<int>&lowTime
             lowTime[node] = min(lowTime[node], time[neigh]);
         }
     }
-    //This if for the starting node of a component of a graph
+    //This is for the starting node of a component of a graph
     if(child>1 && parent==-1){
         isArticulationPoint[node] = 1;
     }
