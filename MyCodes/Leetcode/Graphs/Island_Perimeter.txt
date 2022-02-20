@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int neighbours(int i, int j, int n, int m, vector<vector<int>>&grid, vector<vector<int>>&directions){
+        int count=0;
+        
+        for(vector<int>&dir: directions){
+            int nx = i+dir[0];
+            int ny = j+dir[1];
+            if(nx>=0 && nx<n && ny>=0 && ny<m && grid[nx][ny])count++;
+        }
+        return count;
+    }
+    
+    int islandPerimeter(vector<vector<int>>& grid) {
+        int perimeter=0;
+        int n,m;
+        n = grid.size();
+        m = grid[0].size();
+        vector<vector<int>>directions = {{1,0}, {-1,0}, {0,1}, {0,-1}};
+        for(int i=0; i<grid.size(); i++){
+            for(int j=0; j<grid[0].size(); j++){
+                if(grid[i][j]){
+                    perimeter+= 4-neighbours(i, j, n, m, grid, directions);
+                }
+            }
+        }
+        return perimeter;
+    }
+};
