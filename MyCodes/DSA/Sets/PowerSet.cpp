@@ -10,7 +10,21 @@ string DecimalToBinary(int num){
             else S+='0';
             num>>=1;
         }
-    }else S='0';
+    }else S+='0';
+    return S;
+}
+
+string Reverse(string S){
+    char fwd, bwd;
+    int len = S.length();
+
+    // fwd = S[0];
+    // bwd = S[len -1];
+    for(int i=0; i<len/2; i++){
+        int temp = S[i];
+        S[i] = S[len -i -1];
+        S[len-i-1] = temp;
+    }
     return S;
 }
 int main(){
@@ -27,10 +41,10 @@ int main(){
     for(int counter=0; counter<pow_set_size; counter++){
         for(int j=0; j<set_size; j++){
             if(counter  & (1<<j)){
-               string S_counter = DecimalToBinary(counter);
-               string S_j = DecimalToBinary(j);
-               cout<<S_counter<<" & "<<S_j<<"----------------->";
-               cout<<set[j]<<"\t"; 
+               string S_counter = Reverse(DecimalToBinary(counter));
+               string S_j = Reverse(DecimalToBinary(1<<j));
+               //cout<<(1<<j)<<"\t"<<S_counter<<" & "<<S_j<<" => "<<Reverse(DecimalToBinary((counter  & (1<<j))))<<"----------------->";
+               cout<<set[j]<<" "; 
             }
         }
         cout<<endl;

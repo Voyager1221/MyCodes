@@ -31,17 +31,11 @@ int main(){
                 //b = r1
                 a1 = r1 + arr[0];
                 a2 = r2 + arr[0];
-                // if(r1>0){
-                //     int a = r1 + arr[0];
-                //     cout<<a<<" "<<r1<<endl;
-                // }else if(r2>0){
-                //     int a = r2 + arr[0];
-                //     cout<<a<<" "<<r2<<endl;
-                // }else cout<<"-1 -1"<<endl;
+                
                 if(r1>=1 && a1>=1)cout<<a1<<" "<<r1<<endl;
                     else if(r2>=1 && a2>=1)cout<<a2<<" "<<r2<<endl;
-                    else cout<<"-1 -1"<<endl;
-            }else cout<<"-1 -1"<<endl;
+                    else cout<<-1<<" "<<-1<<endl;
+            }else cout<<-1<<" "<<-1<<endl;
         }else{
             //a+b= X
             //X = arr[2]
@@ -62,19 +56,13 @@ int main(){
                     int r1, r2, a1, a2;
                     r1 = (arr[3] + sqrt(Discriminant))/2;
                     r2 = (arr[3] - sqrt(Discriminant))/2;
-                    // if(r1>0){
-                    //     int a = arr[3] - r1;
-                    //     cout<<r1<<" "<<a<<endl;
-                    // }else if(r2>0){
-                    //     int a = arr[3] - r2;
-                    //     cout<<r2<<" "<<a<<endl;
-                    // }else cout<<"-1 -1"<<endl;
+                    
                     a1 = arr[3] - r1;
                     a2 = arr[3] - r2;
                     if(r1>=1 && a1>=1)cout<<r1<<" "<<a1<<endl;
                     else if(r2>=1 && a2>=1)cout<<r2<<" "<<a2<<endl;
-                    else cout<<"-1 -1"<<endl;
-                }else cout<<"-1 -1"<<endl;
+                    else cout<<-1<<" "<<-1<<endl;
+                }else cout<<-1<<" "<<-1<<endl;
             }
             else{
                 
@@ -84,19 +72,13 @@ int main(){
                     r1 = (arr[2] + sqrt(Discriminant))/2;
                     r2 = (arr[2] - sqrt(Discriminant))/2;
                     //b = r1
-                    // if(r1>0){
-                    //     int a = arr[2] - r1;
-                    //     cout<<r1<<" "<<a<<endl;
-                    // }else if(r2>0){
-                    //     int a = arr[2] - r2;
-                    //     cout<<r2<<" "<<a<<endl;
-                    // }else cout<<"-1 -1"<<endl;
+                    
                     a1 = arr[2] - r1;
                     a2 = arr[2] - r2;
                     if(r1>=1 && a1>=1)cout<<r1<<" "<<a1<<endl;
                     else if(r2>=1 && a2>=1)cout<<r2<<" "<<a2<<endl;
-                    else cout<<"-1 -1"<<endl;
-                }else cout<<"-1 -1"<<endl;
+                    else cout<<-1<<" "<<-1<<endl;
+                }else cout<<-1<<" "<<-1<<endl;
             }
         }
     }
