@@ -46,7 +46,9 @@
         "type_traits": "cpp",
         "tuple": "cpp",
         "typeinfo": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "readline.h": "c",
+        "history.h": "c"
     }
 
     ,"cmake.cmakePath": "/path/to/cmake"
