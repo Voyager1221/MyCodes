@@ -22,5 +22,11 @@ int main(){
     cin>>n;
     ll memo[n+1]={0};
     cout<<"\nResult: "<<fibonacci(n, memo)<<endl;
+
+    cout<<"Printing memo: "<<endl;
+    for(auto i:memo){
+        cout<< memo[i] <<" ";
+    }
+    cout<<endl;
     return 0;
 }
