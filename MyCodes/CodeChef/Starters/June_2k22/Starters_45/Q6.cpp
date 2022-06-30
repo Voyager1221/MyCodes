@@ -11,7 +11,6 @@ int main(){
         ll N;
         cin>>N;
         ll cnt_odd=0, cnt_even=0;
-        // map<ll, ll>m;
         vector<ll>vec(2*N,-1);
         for(int i=0; i<2*N; i++){
             cin>>vec[i];
@@ -23,21 +22,21 @@ int main(){
             cout<< (cnt_odd-cnt_even)/2<<endl;
         }else{
             ll ans=0;
-            sort(vec.begin(), vec.end());
-            ll diff= (cnt_even-cnt_odd)/2;
+            vector<ll>cnt;
             for(auto itr:vec){
-                if(itr%2==0 && diff>0){
-                    ll ops=0;
+                if(itr%2==0){
+                    ll ops = 0;
                     while(itr>0){
                         itr/=2;
                         ops++;
-                        if(itr%2==1){
-                            ans+=ops;
-                            diff--;
-                            break;
-                        }
+                        if(itr%2==1)cnt.push_back(ops);
                     }
                 }
+            }
+            ll diff = (cnt_even-cnt_odd)/2;
+            sort(cnt.begin(), cnt.end());
+            for(int i=0; i<diff; i++){
+                ans+=cnt[i];
             }
             cout<<ans<<endl;
         }
