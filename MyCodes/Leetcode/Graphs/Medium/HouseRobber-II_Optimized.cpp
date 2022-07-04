@@ -28,4 +28,4 @@ public:
         }
         return max(ans1, ans2);
     }
-};
+}
