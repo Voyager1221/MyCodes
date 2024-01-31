@@ -1,5 +1,5 @@
 #include<iostream>
-
+#include<vector>
 using namespace std;
 
 void printF(int index, vector<int>&ds, int arr[], int n){
@@ -19,6 +19,6 @@ int main(){
         cin>>arr[i];
     }
     vector<int>ds;
-    printF(0, ds, arr, n) 
+    printF(0, ds, arr, n);
     return 0;
 }

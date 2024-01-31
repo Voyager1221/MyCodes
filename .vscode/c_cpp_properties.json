@@ -12,7 +12,8 @@
             ],
             "windowsSdkVersion": "10.0.19041.0",
             "cStandard": "c17",
-            "intelliSenseMode": "windows-msvc-x64"
+            "intelliSenseMode": "windows-msvc-x64",
+            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe"
         }
     ],
     "version": 4
