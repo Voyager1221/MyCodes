@@ -9,6 +9,8 @@ void swap(vector<int>&vec, int i, int j){
     vec[j] = temp;
 }
 
+// Pivot = low
+// To be optimized
 void quickSort(vector<int>&vec, int pivot, int low, int high){
     // Base Condition
     if(low>=high){
