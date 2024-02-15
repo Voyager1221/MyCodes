@@ -243,6 +243,7 @@ void nQueens_avgSolution(vector<string>&board, vector<vector<string>>&ans, int c
     }
 }
 
+// BEST SOLUTION
 void hashingQueenOccurance(vector<string>&board, vector<int>&leftRow, vector<int>&upperDiagonal, vector<int>&lowerDiagonal, int row, int col, int N){
     board[row][col] = 'Q';
     leftRow[row] = 1;
