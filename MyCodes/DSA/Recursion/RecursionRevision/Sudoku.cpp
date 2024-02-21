@@ -4,8 +4,12 @@
 
 using namespace std;
 
-void sudokuSolver(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, int row, int col){
+void sudokuSolver(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, int x, int y, int N){
+    
+    // int row = 3*(x/3)+ (y/3);
+    // int col = 3*(x%3) + (y%3);
 
+    for(int )
 }
 
 int main(){
@@ -27,5 +31,16 @@ int main(){
         }
     }
 
+    // for(int i=0; i<N; i++){
+    //     int cnt = 0;
+    //     for(int j=0; j<N; j++){
+    //         int x = 3*(i/3)+ (j/3);
+    //         int y = 3*(i%3) + (j%3);
+    //         cout<<"( "<<x<<", "<<y<<" ) ";
+    //         cnt++;
+    //         if(cnt%3==0)cout<<endl;
+    //     }
+    //     cout<<"\n"<<endl;
+    // }
     return 0;
 }
