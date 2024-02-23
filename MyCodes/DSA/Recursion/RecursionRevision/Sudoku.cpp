@@ -13,42 +13,101 @@ using namespace std;
 //     }
 // }
 
-void sudokuSolver(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, vector<vector<int>>&subMatrixHashMap, int x, int cnt, int N){
-    
+void hashingNumOccurence(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, vector<vector<int>>&subMatrixHashMap, int p, int q, int x, int r, int num, int N){
+    sudokuMatrix[p][q] = to_string(num);
+    rowHashMap[p][num] = 1;
+    colHashMap[q][num] = 1;
+    // int r = 2*(x) + (p/3) + (q/3);
+    subMatrixHashMap[r][num] = 1;
+}
 
-    for(int y=0; y<N; y++){
-        int p = 3*(x/3)+ (y/3);
-        int q = 3*(x%3) + (y%3);
+void unHashingNumOccurence(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, vector<vector<int>>&subMatrixHashMap, int p, int q, int x, int r, int num, int N){
+    sudokuMatrix[p][q] = ".";
+    rowHashMap[p][num] = 0;
+    colHashMap[q][num] = 0;
+    // int r = 2*(p/3) + (p/3) + (q/3);
+    subMatrixHashMap[r][num] = 0;
+}
+
+void display(vector<vector<int>>&vec){
+    for(auto i:vec){
+        for(auto j:i){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+void displayRes(vector<vector<string>>&vec){
+    cout<<"Printing the result..."<<endl;
+    for(auto i:vec){
+        for(auto j:i){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+}
+
+void sudokuSolver(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, vector<vector<int>>&subMatrixHashMap, int x, int y, int cnt, int N){
+    // Base Condition
+    if(x == N){
+        cout<<"In base condition"<<endl;
+        displayRes(sudokuMatrix);
+        return;
+    }
+    cout<<"\n\nPrinting the value of x: "<<x<<endl;
+    for(int itr=y; itr<N; itr++){
+        int p = 3*(x/3)+ (itr/3);
+        int q = 3*(x%3) + (itr%3);
         cnt++;
+        cout<<"Inside Outer For Loop"<<endl;
+        cout<<"Printing the value of COUNTER: "<<cnt<<endl;
         if(sudokuMatrix[p][q]=="."){
-            x = cnt/9;
             // insertPossibleNumber();
-            int r = 2*x + (p+q);
+            int r = 2*(p/3) + (p/3) +(q/3);
             for(int num=1; num<=9; num++){
+                cout<<"Inside Inner For Loop"<<endl;
                 if(rowHashMap[p][num]==0 && colHashMap[q][num] ==0 && subMatrixHashMap[r][num]==0){
-                    sudokuMatrix[p][q] = to_string(num);
-                    sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, x, cnt, N);
-                    sudokuMatrix[p][q] = ".";
+                    cout<<"Picking the number"<<endl;
+                    y += 1;
+                    hashingNumOccurence(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, p, q, cnt/9, r, num, N);
+                    sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, cnt/9, y%9, cnt, N);
+                    unHashingNumOccurence(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, p, q, cnt/9, r, num, N);
+                    y -= 1;
+                    cout<<"Resetting everything"<<endl;
                 }
             }
-
+            cnt--;
         }
     }
 }
+
+
 
 int main(){
 
     vector<vector<int>>rowHashMap(9, vector<int>(10, 0));
     vector<vector<int>>colHashMap(9, vector<int>(10, 0));
     vector<vector<int>>subMatrixHashMap(9, vector<int>(10,0));
-    vector<vector<string>>sudokuMatrix(9, vector<string>(9, ""));
+    // vector<vector<string>>sudokuMatrix(9, vector<string>(9, ""));
 
+    vector<vector<string>>sudokuMatrix;
+    sudokuMatrix = {    {"5", "3", ".", ".", "7", ".", ".", ".", "."},
+                        {"6", ".", ".", "1", "9", "5", ".", ".", "."},
+                        {".", "9", "8", ".", ".", ".", ".", "6", "."},
+                        {"8", ".", ".", ".", "6", ".", ".", ".", "3"},
+                        {"4", ".", ".", "8", ".", "3", ".", ".", "1"},
+                        {"7", ".", ".", ".", "2", ".", ".", ".", "6"},
+                        {".", "6", ".", ".", ".", ".", "2", "8", "."},
+                        {".", ".", ".", "4", "1", "9", ".", ".", "5"},
+                        {".", ".", ".", ".", "8", ".", ".", "7", "9"}
+                    };
     int N = 9;
     for(int row=0; row<N; row++){
         for(int col=0; col<N; col++){
-            string s;
-            cin>>s;
-            sudokuMatrix[row][col] = s;
+            string s = sudokuMatrix[row][col];
+            // cin>>s;
+            // sudokuMatrix[row][col] = s;
             if(s!="."){
                 int num = stoi(s);
                 rowHashMap[row][num] = 1;
@@ -64,6 +123,15 @@ int main(){
             }
         }
     }
+    cout<<"Printing the matrix of rolHashMap"<<endl;
+    display(rowHashMap);
+    cout<<"Printing the matrix of colHashMap"<<endl;
+    display(colHashMap);
+    cout<<"Printing the matrix of subMatrixHashMap"<<endl;
+    display(subMatrixHashMap);
+
+    sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, 0, 0, 0, N);
+
     // for(int i=0; i<N; i++){
     //     int cnt = 0;
     //     for(int j=0; j<N; j++){
@@ -76,17 +144,17 @@ int main(){
     //     cout<<"\n"<<endl;
     // }
 
-    for(int row=0; row<N; row++){
-        int cnt = 0;
-        for(int col=0; col<N; col++){
-            int p = row/3;
-            int q = col/3; 
-            int r = (row/3)*2 + p+q;    
-            cout<<"("<<p<<", "<<q<<", "<<row<<") ";
+    // for(int row=0; row<N; row++){
+    //     int cnt = 0;
+    //     for(int col=0; col<N; col++){
+    //         int p = row/3;
+    //         int q = col/3; 
+    //         int r = (row/3)*2 + p+q;    
+    //         cout<<"("<<p<<", "<<q<<", "<<row<<") ";
 
-        }
-        cout<<"\n"<<endl;
-    }
+    //     }
+    //     cout<<"\n"<<endl;
+    // }
 
     return 0;
 }
