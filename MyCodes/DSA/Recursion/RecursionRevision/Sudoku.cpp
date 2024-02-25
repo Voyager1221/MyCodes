@@ -49,37 +49,46 @@ void displayRes(vector<vector<string>>&vec){
 }
 
 void sudokuSolver(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, vector<vector<int>>&subMatrixHashMap, int x, int y, int cnt, int N){
+    
     // Base Condition
-    if(x == N){
-        cout<<"In base condition"<<endl;
+    if(x == 9){
         displayRes(sudokuMatrix);
         return;
     }
-    cout<<"\n\nPrinting the value of x: "<<x<<endl;
-    for(int itr=y; itr<N; itr++){
+    
+    
+    cout<<"x: "<<x<<", y: "<<y<<endl;
+    
+    for(int itr=y%9; itr<N; itr++){
+
         int p = 3*(x/3)+ (itr/3);
         int q = 3*(x%3) + (itr%3);
         cnt++;
-        cout<<"Inside Outer For Loop"<<endl;
-        cout<<"Printing the value of COUNTER: "<<cnt<<endl;
+        y++;
+        cout<<"Print"<<endl;
         if(sudokuMatrix[p][q]=="."){
-            // insertPossibleNumber();
+            
             int r = 2*(p/3) + (p/3) +(q/3);
+
             for(int num=1; num<=9; num++){
-                cout<<"Inside Inner For Loop"<<endl;
-                if(rowHashMap[p][num]==0 && colHashMap[q][num] ==0 && subMatrixHashMap[r][num]==0){
-                    cout<<"Picking the number"<<endl;
-                    y += 1;
-                    hashingNumOccurence(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, p, q, cnt/9, r, num, N);
-                    sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, cnt/9, y%9, cnt, N);
-                    unHashingNumOccurence(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, p, q, cnt/9, r, num, N);
-                    y -= 1;
-                    cout<<"Resetting everything"<<endl;
+                
+                if(rowHashMap[p][num]==0 && colHashMap[q][num]==0){
+                       
+                    if(subMatrixHashMap[r][num]==0){        
+                        hashingNumOccurence(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, p, q, y/9, r, num, N);
+                        displayRes(sudokuMatrix);
+                        sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, y/9, (y+1), cnt, N);
+                        unHashingNumOccurence(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, p, q, y/9, r, num, N);                    
+                        y--;
+                        cnt--;
+                    }
                 }
+
             }
-            cnt--;
+            // return;
         }
     }
+    sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, y/9, y, cnt, N);
 }
 
 
@@ -106,8 +115,7 @@ int main(){
     for(int row=0; row<N; row++){
         for(int col=0; col<N; col++){
             string s = sudokuMatrix[row][col];
-            // cin>>s;
-            // sudokuMatrix[row][col] = s;
+            
             if(s!="."){
                 int num = stoi(s);
                 rowHashMap[row][num] = 1;
@@ -123,38 +131,15 @@ int main(){
             }
         }
     }
-    cout<<"Printing the matrix of rolHashMap"<<endl;
-    display(rowHashMap);
-    cout<<"Printing the matrix of colHashMap"<<endl;
-    display(colHashMap);
-    cout<<"Printing the matrix of subMatrixHashMap"<<endl;
-    display(subMatrixHashMap);
+    // cout<<"Printing the matrix of rolHashMap"<<endl;
+    // display(rowHashMap);
+    // cout<<"Printing the matrix of colHashMap"<<endl;
+    // display(colHashMap);
+    // cout<<"Printing the matrix of subMatrixHashMap"<<endl;
+    // display(subMatrixHashMap);
 
     sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, 0, 0, 0, N);
 
-    // for(int i=0; i<N; i++){
-    //     int cnt = 0;
-    //     for(int j=0; j<N; j++){
-    //         int x = 3*(i/3)+ (j/3);
-    //         int y = 3*(i%3) + (j%3);
-    //         cout<<"( "<<x<<", "<<y<<" ) ";
-    //         cnt++;
-    //         if(cnt%3==0)cout<<endl;
-    //     }
-    //     cout<<"\n"<<endl;
-    // }
-
-    // for(int row=0; row<N; row++){
-    //     int cnt = 0;
-    //     for(int col=0; col<N; col++){
-    //         int p = row/3;
-    //         int q = col/3; 
-    //         int r = (row/3)*2 + p+q;    
-    //         cout<<"("<<p<<", "<<q<<", "<<row<<") ";
-
-    //     }
-    //     cout<<"\n"<<endl;
-    // }
 
     return 0;
 }
