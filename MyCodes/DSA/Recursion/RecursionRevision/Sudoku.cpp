@@ -48,6 +48,26 @@ void displayRes(vector<vector<string>>&vec){
     }
 }
 
+// void sudokuSolver_better(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, vector<vector<int>>&subMatrixHashMap, int x, int y, int cnt, int N){
+//     // Base Condition
+//     if(x==9){
+//         displayRes(sudokuMatrix);
+//         return;
+//     }
+
+//     int itr = y%9;
+
+//     int p = 3*(x/3)+ (itr/3);
+//     int q = 3*(x%3) + (itr%3);
+
+//     for(int num=1; num<=9; num++){
+
+//     }
+//     sudokuSolver_better(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, y/9, y+1, cnt, N);
+
+// }
+
+// Worst Approach
 void sudokuSolver(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHashMap, vector<vector<int>>&colHashMap, vector<vector<int>>&subMatrixHashMap, int x, int y, int cnt, int N){
     
     // Base Condition
@@ -58,7 +78,11 @@ void sudokuSolver(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHa
     
     
     cout<<"x: "<<x<<", y: "<<y<<endl;
+    // The for loop with itr<=N is giving correct ans but missing 2 spots each time. There has to be some issue with indexing. 
+    // for(int itr=y%9; itr<=N; itr++){
+    // for(int itr=y%10; itr<N; itr++){
     
+    // The for loop with itr<N is malfunctioning. The suspect remains 'y++'.
     for(int itr=y%9; itr<N; itr++){
 
         int p = 3*(x/3)+ (itr/3);
@@ -77,15 +101,15 @@ void sudokuSolver(vector<vector<string>>&sudokuMatrix, vector<vector<int>>&rowHa
                     if(subMatrixHashMap[r][num]==0){        
                         hashingNumOccurence(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, p, q, y/9, r, num, N);
                         displayRes(sudokuMatrix);
-                        sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, y/9, (y+1), cnt, N);
+                        sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, y/9, y, cnt, N);
                         unHashingNumOccurence(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, p, q, y/9, r, num, N);                    
-                        y--;
-                        cnt--;
                     }
                 }
 
             }
-            // return;
+            // cnt--;
+            // y--;
+            return;
         }
     }
     sudokuSolver(sudokuMatrix, rowHashMap, colHashMap, subMatrixHashMap, y/9, y, cnt, N);
@@ -105,8 +129,8 @@ int main(){
                         {"6", ".", ".", "1", "9", "5", ".", ".", "."},
                         {".", "9", "8", ".", ".", ".", ".", "6", "."},
                         {"8", ".", ".", ".", "6", ".", ".", ".", "3"},
-                        {"4", ".", ".", "8", ".", "3", ".", ".", "1"},
-                        {"7", ".", ".", ".", "2", ".", ".", ".", "6"},
+                        {"7", ".", ".", "8", ".", "3", ".", ".", "1"},//4
+                        {"4", ".", ".", ".", "2", ".", ".", ".", "6"},//7
                         {".", "6", ".", ".", ".", ".", "2", "8", "."},
                         {".", ".", ".", "4", "1", "9", ".", ".", "5"},
                         {".", ".", ".", ".", "8", ".", ".", "7", "9"}
