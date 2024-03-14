@@ -22,10 +22,10 @@ int maxSumNonAdjacentElements_StdSoln_Tab(vector<int>&vec, int N){
 
 
 int maxSumNonAdjacentElements_StdSoln_Tab_Opt(vector<int>&vec, int N){
-    int last1 = vec[1];
-    int last2 = vec[0];
+    int last1 = vec[0];
+    int last2 = 0;
     
-    for(int index=2; index<N; index++){
+    for(int index=1; index<N; index++){
         int pickElement = vec[index] + last2;
         int notPickElement = 0 + last1;
 
