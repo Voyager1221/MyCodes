@@ -8,21 +8,27 @@ int maxSumNonAdjacentElements_Tab_Opt(vector<int>&vec2, int NN){
     int maxSumTillLast2Index = vec2[0];
     int maxSumTillLast3Index = 0;
     int last = 0;
+    int maxSum = 0;
     if(NN>=1){
-        maxSumTillLast3Index = vec2[1];
         last = vec2[1];
+        maxSum = max(maxSumTillLast2Index,vec2[1]);
     }
-    int maxSum = max(maxSumTillLast2Index, maxSumTillLast3Index);
+    if(NN>=2){
+        maxSumTillLast3Index = maxSumTillLast2Index;
+        maxSumTillLast2Index = last;
+        last = vec2[2] + vec2[0];
+        maxSum = max(maxSum, last);
+    }
 
-    for(int index=2; index<NN; index++){
+    for(int index=3; index<NN; index++){
         int maxSum2Step = vec2[index]+maxSumTillLast2Index;
         int maxSum3Step = vec2[index]+maxSumTillLast3Index;
         
         int maxSumTillCurrStep = max(maxSum2Step, maxSum3Step);
         maxSum = max(maxSum, maxSumTillCurrStep);
         
-        maxSum3Step = maxSum2Step;
-        maxSum2Step = last;
+        maxSumTillLast3Index = maxSumTillLast2Index;
+        maxSumTillLast2Index = last;
         last = maxSumTillCurrStep;
     }
     return maxSum;
