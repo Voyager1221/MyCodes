@@ -3,26 +3,43 @@
 
 using namespace std;
 
+// The sub-problems are saved exactly in the same order for both the approaches/functions
 int NinjaTraining_Dp(vector<vector<int>>&pointsTable,
                      vector<vector<int>>&maxPointsTillDayAndLastActivity,
                      int dayNo, 
                      int lastActivity)
 {
-    cout<<"where are we?"<<endl;
     // Base Condition
     if(dayNo<0)return 0;
-    cout<<"Did we crossed 1st base condition?"<<endl;
-
-    // if(maxPointsTillDayAndLastActivity[dayNo][lastActivity] != -1)return maxPointsTillDayAndLastActivity[dayNo][lastActivity];
-    cout<<"Did we crossed 2nd base condition?"<<endl;
+    if(maxPointsTillDayAndLastActivity[dayNo][lastActivity] != -1)return maxPointsTillDayAndLastActivity[dayNo][lastActivity];
+    
     for(int activity=0; activity<3; activity++){
         if(activity != lastActivity){
-            cout<<"Are we in if statement inside of for loop?"<<endl;
             int pointsTillCurrDayCurrActivity = pointsTable[dayNo][activity] + NinjaTraining_Dp(pointsTable, maxPointsTillDayAndLastActivity, dayNo-1, activity);
-            maxPointsTillDayAndLastActivity[dayNo][lastActivity] = max(maxPointsTillDayAndLastActivity[dayNo][activity], pointsTillCurrDayCurrActivity);
+            maxPointsTillDayAndLastActivity[dayNo][lastActivity] = max(maxPointsTillDayAndLastActivity[dayNo][lastActivity], pointsTillCurrDayCurrActivity);
         }
     }
     return maxPointsTillDayAndLastActivity[dayNo][lastActivity];
+}
+
+// The sub-problems are saved exactly in the same order for both the approaches/functions
+int NinjaTraining_Dp_Tweaks(vector<vector<int>>&pointsTable,
+                     vector<vector<int>>&maxPointsTillDayAndLastActivity,
+                     int dayNo, 
+                     int lastActivity)
+{
+    // Base Condition
+    if(dayNo<0)return 0;
+    if(maxPointsTillDayAndLastActivity[dayNo][lastActivity] != -1)return maxPointsTillDayAndLastActivity[dayNo][lastActivity];
+    int maximum = 0;
+    for(int activity=0; activity<3; activity++){
+        if(activity != lastActivity){
+            int pointsTillCurrDayCurrActivity = pointsTable[dayNo][activity] + NinjaTraining_Dp(pointsTable, maxPointsTillDayAndLastActivity, dayNo-1, activity);
+            // maxPointsTillDayAndLastActivity[dayNo][lastActivity] = max(maxPointsTillDayAndLastActivity[dayNo][lastActivity], pointsTillCurrDayCurrActivity);
+            maximum = max(maximum, pointsTillCurrDayCurrActivity);
+        }
+    }
+    return maxPointsTillDayAndLastActivity[dayNo][lastActivity] = maximum;
 }
 
 int main(){
@@ -31,7 +48,10 @@ int main(){
     cin>>days;
 
     vector<vector<int>>pointsTable(days, vector<int>(3, -1));
+
     vector<vector<int>>maxPointsTillDayAndLastActivity(days, vector<int>(4, -1));
+    vector<vector<int>>maxPointsTillDayAndLastActivity_forTweaked(days, vector<int>(4, -1));
+
     for(int i=0; i<days; i++){
         for(int j=0; j<3; j++){
             cin>>pointsTable[i][j];
@@ -39,6 +59,7 @@ int main(){
     }
 
     cout<<NinjaTraining_Dp(pointsTable, maxPointsTillDayAndLastActivity, days-1, 3)<<endl;
+    cout<<NinjaTraining_Dp_Tweaks(pointsTable, maxPointsTillDayAndLastActivity_forTweaked, days-1, 3)<<endl;
     for(auto i:pointsTable){
         for(auto j:i){
             cout<<j<<" ";
@@ -49,6 +70,13 @@ int main(){
     cout<<endl;
     
     for(auto i:maxPointsTillDayAndLastActivity){
+        for(auto j:i){
+            cout<<j<<" ";
+        }
+        cout<<endl;
+    }
+    cout<<endl;
+    for(auto i:maxPointsTillDayAndLastActivity_forTweaked){
         for(auto j:i){
             cout<<j<<" ";
         }
